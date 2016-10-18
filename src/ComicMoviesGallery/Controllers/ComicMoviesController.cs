@@ -8,9 +8,18 @@ namespace ComicMoviesGallery.Controllers
 {
     public class ComicMoviesController : Controller
     {
-        public string Detail()
+        
+        public ActionResult Detail()
         {
-            return "Hello World";
+            ViewBag.MovieTitle = "Amazing Spiderman";
+            ViewBag.description = "<p>The amazing spiderman is a 2012 movie.</p>";
+            ViewBag.artists = new string[]
+            {
+                "Actor: KJ Millar",
+                "Director: Sharee Lane",
+                "Writer: Uzair Ilahi"
+            };
+            return View();
         }
     }
 }
