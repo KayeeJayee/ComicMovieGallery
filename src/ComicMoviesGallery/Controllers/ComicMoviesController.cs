@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ComicMoviesGallery.Data;
+using ComicMoviesGallery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,18 +10,30 @@ namespace ComicMoviesGallery.Controllers
 {
     public class ComicMoviesController : Controller
     {
-        
-        public ActionResult Detail()
+        private ComicMovieRepository _comicMovieRepository = null;
+
+        public ComicMoviesController()
         {
-            ViewBag.MovieTitle = "Amazing Spiderman";
-            ViewBag.description = "<p>The amazing spiderman is a 2012 movie.</p>";
-            ViewBag.artists = new string[]
+            _comicMovieRepository = new ComicMovieRepository();
+        }
+
+        public ActionResult Index()
+        {
+            var comicMovies = _comicMovieRepository.GetComicMovies();
+
+            return View(comicMovies);
+        }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
             {
-                "Actor: KJ Millar",
-                "Director: Sharee Lane",
-                "Writer: Uzair Ilahi"
-            };
-            return View();
+                return HttpNotFound();
+            }
+
+            var comicMovie = _comicMovieRepository.GetComicMovie((int)id);
+
+            return View(comicMovie);
         }
     }
 }
