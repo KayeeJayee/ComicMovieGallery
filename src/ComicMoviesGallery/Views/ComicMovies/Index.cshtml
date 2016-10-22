@@ -1,4 +1,6 @@
-﻿@model ComicMoviesGallery.Models.ComicMovie
+﻿
+
+@model ComicMoviesGallery.Models.ComicMovie[]
 
 @{
     ViewBag.Title = "Comic Movies";
@@ -13,12 +15,16 @@
             <h4>
                 @Html.ActionLink(comicMovie.DisplayText, "Detail",
                new { id = comicMovie.Id })
-        </h4>
-        <a href="@Url.Action("Detail", new { id = comicMovie.Id })">
-            <img src="/Images/@comicMovie.CoverImageFileName"
-                 alt="@comicMovie.DisplayText"
-                 class="img-responsive" />
-        </a>
-    </div>
+            </h4>
+            <a href="@Url.Action("Detail", new { id = comicMovie.Id })">
+                <img src="/Images/@comicMovie.CoverImageFileName"
+                     alt="@comicMovie.DisplayText"
+                     class="img-responsive" />
+            </a>
+        </div>
     }
 </div>
+
+
+
+

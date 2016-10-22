@@ -19,9 +19,9 @@ namespace ComicMoviesGallery.Controllers
 
         public ActionResult Index()
         {
-            var comicMovies = _comicMovieRepository.GetComicMovies();
+            var comicMovie = _comicMovieRepository.GetComicMovies();
 
-            return View(comicMovies);
+            return View(comicMovie);
         }
 
         public ActionResult Detail(int? id)
